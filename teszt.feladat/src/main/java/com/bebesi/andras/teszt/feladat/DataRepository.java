@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class DataRepository {
 
-    private final BannedLettersRepository bannedLettersRepository = new BannedLettersRepository();
+    private BannedLettersRepository bannedLettersRepository;
 
     /**
      * It count the income char amount in the income value
@@ -27,6 +27,7 @@ public class DataRepository {
      * @return ArrayList which contains amounts of the same letters the income value.
      */
     private ArrayList<Long> getSummaryLettersNumberInValue(String value) {
+        bannedLettersRepository = new BannedLettersRepository();
         HashMap<Character, Long> summaryHashMap = new HashMap<>();
         value.chars().forEach(ch -> {
             Long charAmount = summaryHashMap.get(((char) ch));
